@@ -31,21 +31,9 @@ Aluno.init(
         }
     },
     {
-        sequelize,
-        tableName: "alunos",
-        timestamps: false, 
-    }
-
-    import { Request, Response } from 'express';
-    import { Aluno } from '../models/Aluno';
-    
-    export const listarAlunos = async (req: Request, res: Response): Promise<Response> => {
-        try {
-            const alunos = await Aluno.findAll();
-            return res.json(alunos);
-        } catch (error) {
-            console.error("Erro ao listar alunos:", error);
-            return res.status(500).json({ error: "Erro ao listar alunos" });
-        }
-    };
+        sequelize, 
+        tableName: "alunos", 
+        timestamps: false,
+      }
+    );
     
