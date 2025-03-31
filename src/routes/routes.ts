@@ -9,16 +9,25 @@ const router = Router();
 
 router.get('/ping', ApiController.ping);
 
+//router.get('/saudacao', ApiController.apiSaudacao);
+
 router.get('/listarTodosAlunos', AlunoController.listarAlunos);
-router.post('/cadastrarAlunos', AlunoController.cadastrarAluno);
+router.post('/cadastrarAluno', AlunoController.cadastrarAluno);
+router.put('/atualizarAluno/:alunoId', AlunoController.atualizarAluno);
+router.delete('/deletarAluno/:alunoId', AlunoController.deletarAluno);
 
 router.get('/listarTodasDisciplinas', DisciplinaController.listarDisciplinas);
 router.post('/cadastrarDisciplina', DisciplinaController.cadastrarDisciplina);
+router.put('/atualizarDisciplina/:disciplinaId', DisciplinaController.atualizarDisciplina);
+
 
 router.get('/listarTodasDisciplinas', AlunoDisciplinaController.vincularAlunoADisciplina);
 router.post('/cadastrarDisciplina', AlunoDisciplinaController.listarDisciplinasDoAluno);
 
-router
+router.get("/listarAlunoDisciplina", AlunoDisciplinaController.listarDisciplinasDoAluno);
+router.post("/vincularAlunoDisciplina", AlunoDisciplinaController.vincularAlunoADisciplina);
+
+
 
 
 export default router;

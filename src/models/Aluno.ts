@@ -33,7 +33,8 @@ Aluno.init(
     {
         sequelize, 
         tableName: "alunos", 
-        timestamps: false,
+        timestamps: true,
+        paranoid: true,
       }
     );
     
