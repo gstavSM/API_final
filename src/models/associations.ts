@@ -3,7 +3,7 @@ import { Disciplina } from "./Disciplina";
 import { AlunoDisciplina } from "./AlunoDisciplina";
 
 Aluno.belongsToMany(Disciplina, {
-    trough: AlunoDisciplina,
+    through: AlunoDisciplina,
     foreignKey: "alunoId"
 });
 

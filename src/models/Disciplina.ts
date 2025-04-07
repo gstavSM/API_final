@@ -1,5 +1,5 @@
 import { Model, DataTypes } from "sequelize";
-import { sequelize } from ".../instances/mysql";
+import { sequelize } from "../instances/mysql";
 
 export class  Disciplina extends Model {
     public id!: number;

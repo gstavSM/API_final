@@ -7,7 +7,7 @@ import * as AlunoDisciplinaController from '../controllers/AlunoDisciplinaContro
 
 const router = Router();
 
-router.get('/ping', ApiController.ping);
+//router.get('/ping', ApiController.ping);
 
 //router.get('/saudacao', ApiController.apiSaudacao);
 
@@ -24,10 +24,8 @@ router.put('/atualizarDisciplina/:disciplinaId', DisciplinaController.atualizarD
 router.get('/listarTodasDisciplinas', AlunoDisciplinaController.vincularAlunoADisciplina);
 router.post('/cadastrarDisciplina', AlunoDisciplinaController.listarDisciplinasDoAluno);
 
-router.get("/listarAlunoDisciplina", AlunoDisciplinaController.listarDisciplinasDoAluno);
-router.post("/vincularAlunoDisciplina", AlunoDisciplinaController.vincularAlunoADisciplina);
-
-
+router.get("/listarDisciplinasDoAluno/:alunoId", AlunoDisciplinaController.listarDisciplinasDoAluno);
+router.post("/vincularAlunoADisciplina", AlunoDisciplinaController.vincularAlunoADisciplina);
 
 
 export default router;
