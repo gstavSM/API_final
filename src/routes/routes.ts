@@ -9,7 +9,7 @@ const router = Router();
 
 //router.get('/ping', ApiController.ping);
 
-//router.get('/saudacao', ApiController.apiSaudacao);
+outer.get('/saudacao', ApiController.apiSaudacao);
 
 router.get('/listarTodosAlunos', AlunoController.listarAlunos);
 router.post('/cadastrarAluno', AlunoController.cadastrarAluno);
