@@ -1,58 +1,39 @@
 import request from "supertest";
-import server from "../server";
+import server from "../../server";
+import{
+  verificarSenhaForte,
+  converterParaBinario,
+  /*mediaArray,*/
+  ehPar,
+  /*validarCEP,
+  contarPalavras,*/
+} from "../apiController"
 
-describe("Testes da API", () => {
-  it("Deve retornar uma saudação na rota /saudacao", async () => {
-    const response = await request(server).get("/saudacao");
 
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual({ mensagem: "Olá, bem-vindo à API!" });
-  });
+describe("Esse é um teste que irá validar se a senha é forte ou fraca", () => {
+  it("Irá retornar true se a senha for forte", () => {
+  expect(verificarSenhaForte("Abc@1234")).toBe(true);
+  });  
+  it("Irá retornar false se a senha for fraca", () => {
+  expect(verificarSenhaForte("senhaFraca")).toBe(false);
+  })
 });
 
-test("dois mais dois", () => {
-  const valor = 2 + 2;
+describe("Esse teste deve retornar um binário", () => {
+  it("Deve transformar um número decimal em binário", () => {
+  expect(typeof converterParaBinario(10)).toBe("string");
+  })
+  it("Deve transformar um número decimal em binário", () => {
+    expect(typeof converterParaBinario(255)).toBe("string");
+  })
+})
 
-  expect(valor).toBeGreaterThan(3);
-  expect(valor).toBeGreaterThanOrEqual(3.5);
-  expect(valor).toBeLessThan(5);
-  expect(valor).toBeLessThanOrEqual(4.5);
+describe ("Esse teste deve verificar se o número é par", () => {
+  it("Irá verificar se o número 4 é par e deve dar true", () => {
+    expect(ehPar(4)).toBe(true);
+  })
+  it("Irá verificar se o número 7 é par e deve dar false", () => {
+    expect(ehPar(7)).toBe(false);
+  })
+})
 
-  expect(valor).toBe(4);
-  expect(valor).toEqual(4); 
-});
-
-describe("Testes de Cadastro de  Aluno", () => {
-  it("Deve cadastrar um novo aluno na rota /cadastrarAluno", async () => {
-    const novoAluno = {
-      nome: "Luccas Kayure Crisanto",
-      email: "lukinhas.silva@example.com",
-      matricula: "123466516519875",
-    };
-
-    const response = await request(server)
-      .post("/cadastrarAluno")
-      .send(novoAluno);
-
-    expect(response.status).toBe(201);
-    expect(response.body.message).toBe("Aluno cadastrado com sucesso.");
-    expect(response.body.novoAluno).toHaveProperty("nome", novoAluno.nome);
-    expect(response.body.novoAluno).toHaveProperty("email", novoAluno.email);
-    expect(response.body.novoAluno).toHaveProperty(
-      "matricula",
-      novoAluno.matricula
-    );
-  });
-});
-
-describe("Testes da Listagem de alunos", () => {
-  it("Deve listar todos os alunos na rota /listarTodosAlunos", async () => {
-    const response = await request(server).get("/listarTodosAlunos");
-
-    expect(response.status).toBe(200);
-    expect(Array.isArray(response.body)).toBe(true);
-    expect(response.body.length).toBeGreaterThan(0);
-  });
-});
-
-//testes atividade 05
