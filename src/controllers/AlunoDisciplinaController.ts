@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { Aluno } from "../models/Aluno";
-import { Disciplina } from "../models/Disciplina";
+import { Disciplinas } from "../models/Disciplinas";
 
 export const listarDisciplinasDoAluno = async (req: Request, res: Response) : Promise<any> => {
     const { alunoId } = req.params;
     
     const aluno = await Aluno.findByPk(alunoId, {
-        include: { model: Disciplina }, 
+        include: { model: Disciplinas}, 
     });
     
     if (aluno) {
@@ -20,7 +20,7 @@ export const vincularAlunoADisciplina = async (req: Request, res: Response) : Pr
     const {alunoId, disciplinaId } = req.body;
 
     const aluno = await Aluno.findByPk(alunoId);
-    const disciplina = await Disciplina.findByPk(disciplinaId);
+    const disciplina = await Disciplinas.findByPk(disciplinaId);
 
     if (!aluno || !disciplina) {
         return res.status(404).json({error: "Aluno ou disciplina não encontrada." });

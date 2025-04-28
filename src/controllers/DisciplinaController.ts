@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { Disciplina } from "../models/Disciplina";
+import { Disciplinas } from "../models/Disciplinas";
 
 
 export const listarDisciplinas = async  (req: Request, res: Response) : Promise<any> => {
-    const disciplinas = await Disciplina.findAll();
+    const disciplinas = await Disciplinas.findAll();
     return res.json(disciplinas);
 }
 
@@ -11,9 +11,9 @@ export const cadastrarDisciplina = async (req: Request, res: Response) : Promise
     const { nome } = req.body;
 
     if (nome) {
-        let disciplinaExistente = await Disciplina.findOne ({where: { nome }})
+        let disciplinaExistente = await Disciplinas.findOne ({where: { nome }})
         if (!disciplinaExistente) {
-            let novaDisciplina = await Disciplina.create(( nome ));
+            let novaDisciplina = await Disciplinas.create(( nome ));
 
             res.status(201);
             return res.json({
@@ -33,7 +33,7 @@ export const atualizarDisciplina = async (req: Request, res: Response)  : Promis
         const { disciplinaID } = req.params;
         const dadosAtualizados = req.body;
 
-        const disciplina = await Disciplina.findByPk(disciplinaID);
+        const disciplina = await Disciplinas.findByPk(disciplinaID);
         if (!disciplina) {
             return res.status(404).json({error: "Aluno não encontrado."});
 

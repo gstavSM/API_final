@@ -1,16 +1,15 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../instances/mysql";
-import { Turmas } from "./Turmas";
 
-export class Aluno extends Model {
+export class Professores extends Model {
     public id!: number;
     public nome!: string;
     public email!: string;
     public matricula!: string;
-    public turmaId!: number;
+    public turma!: number;
 }
 
-Aluno.init(
+Professores.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -31,20 +30,10 @@ Aluno.init(
             unique: true,
             allowNull: false,
         },
-
-        turmaId: {
-         type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
-                model: Turmas,
-                key: "id",          
-            },
-            onDelete: "CASCADE"     
-        },
     },
     {
         sequelize, 
-        tableName: "alunos", 
+        tableName: "professores", 
         timestamps: true,
         paranoid: true,
       }

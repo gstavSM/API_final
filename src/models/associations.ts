@@ -1,13 +1,13 @@
 import { Aluno } from "./Aluno";
-import { Disciplina } from "./Disciplina";
+import { Disciplinas } from "./Disciplinas";
 import { AlunoDisciplina } from "./AlunoDisciplina";
 
-Aluno.belongsToMany(Disciplina, {
+Aluno.belongsToMany(Disciplinas, {
     through: AlunoDisciplina,
     foreignKey: "alunoId"
 });
 
-Disciplina.belongsToMany(Aluno, {
+Disciplinas.belongsToMany(Aluno, {
     through: AlunoDisciplina,
     foreignKey: "alunoId"
 });

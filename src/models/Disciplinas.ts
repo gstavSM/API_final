@@ -1,13 +1,15 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../instances/mysql";
+import { Professores } from "./Professores";
 
-export class  Disciplina extends Model {
+export class  Disciplinas extends Model {
     public id!: number;
     public nome!: string;
+    public professorId!: number;
 
 }
 
-Disciplina.init(
+Disciplinas.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -19,10 +21,21 @@ Disciplina.init(
         allowNull: false,
         unique: true,
       },
+      professorId: {
+         type: DataTypes.INTEGER,
+          allowNull: true,
+          references: {
+            model: Professores,
+            key: "id",
+          },
+          onDelete: "CASCADE",
+        },  
     },
+
     {
       sequelize,
       tableName: "disciplinas",
-      timestamps: false,
+      timestamps: true,
+      paranoid: true,
     }
 )

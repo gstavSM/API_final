@@ -3,13 +3,19 @@ import { sequelize } from "../instances/mysql";
 import { Aluno } from "./Aluno";
 import { Disciplinas } from "./Disciplinas";
 
-export class AlunoDisciplina extends Model {
+export class Notas extends Model {
+  public Id!: number;
   public alunoId!: number;
   public disciplinaId!: number;
 }
 
-AlunoDisciplina.init(
+Notas.init(
   {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     alunoId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -31,7 +37,7 @@ AlunoDisciplina.init(
   },
   {
     sequelize,
-    tableName: "aluno_disciplinas",
+    tableName: "notas",
     timestamps: true,
     paranoid: true,
   }

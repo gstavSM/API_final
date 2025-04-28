@@ -2,17 +2,26 @@ import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../instances/mysql";
 import { Aluno } from "./Aluno";
 import { Disciplinas } from "./Disciplinas";
+import { AllowNull } from "sequelize-typescript";
 
-export class AlunoDisciplina extends Model {
+export class Presencas extends Model {
+  public Id!: number;
   public alunoId!: number;
   public disciplinaId!: number;
+  public data!: Date;
+  public presente!: boolean; 
 }
 
-AlunoDisciplina.init(
+Presencas.init(
   {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     alunoId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: Aluno,
         key: "id",
@@ -21,17 +30,26 @@ AlunoDisciplina.init(
     },
     disciplinaId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: Disciplinas,
         key: "id",
       },
       onDelete: "CASCADE",
     },
+    data: {
+        type: DataTypes.DATE,
+        allowNull: true,  
+    },
+    presente: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
+
+    }
   },
   {
     sequelize,
-    tableName: "aluno_disciplinas",
+    tableName: "presencas",
     timestamps: true,
     paranoid: true,
   }
