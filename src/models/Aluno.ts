@@ -7,7 +7,7 @@ export class Aluno extends Model {
     public nome!: string;
     public email!: string;
     public matricula!: string;
-    public turmaId!: number;
+    public id_turma!: number;
 }
 
 Aluno.init(
@@ -32,7 +32,7 @@ Aluno.init(
             allowNull: false,
         },
 
-        turmaId: {
+        id_turma: {
          type: DataTypes.INTEGER,
             allowNull: true,
             references: {

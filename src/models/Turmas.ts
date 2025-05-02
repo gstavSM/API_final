@@ -25,12 +25,12 @@ Turmas.init(
               type: DataTypes.STRING,
               allowNull: true,
           },
-             id_curso: {
-                type: DataTypes.INTEGER,
-                allowNull: true,
-                references: {
-                  model: Cursos,
-                  key: "id",
+          id_curso: {
+              type: DataTypes.INTEGER,
+              allowNull: true,
+              references: {
+                model: Cursos,
+                key: "id",
                 },
                 onDelete: "CASCADE",
               },

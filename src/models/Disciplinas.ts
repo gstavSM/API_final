@@ -5,7 +5,7 @@ import { Professores } from "./Professores";
 export class  Disciplinas extends Model {
     public id!: number;
     public nome!: string;
-    public professorId!: number;
+    public id_professor!: number;
 
 }
 
@@ -21,7 +21,7 @@ Disciplinas.init(
         allowNull: false,
         unique: true,
       },
-      professorId: {
+      id_professor: {
          type: DataTypes.INTEGER,
           allowNull: true,
           references: {
