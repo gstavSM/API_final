@@ -3,10 +3,10 @@ import server from "../../server";
 import{
   verificarSenhaForte,
   converterParaBinario,
-  /*mediaArray,*/
+  mediaArray,
   ehPar,
-  /*validarCEP,
-  contarPalavras,*/
+  validarCEP,
+  contarPalavras,
 } from "../apiController"
 
 
@@ -37,3 +37,32 @@ describe ("Esse teste deve verificar se o número é par", () => {
   })
 })
 
+describe ("Esse teste deve validar a média dos dois arrays", () => {
+  it ("Irá verificar a média deste array e deve receber 10", () => {
+    expect(mediaArray([5,10,15])).toBe(10);
+  })
+  it ("Irá verificar a media deste array e deve receber 200" ,() => {
+    expect(mediaArray([100,200,300])).toBe(200);
+  })
+})
+
+describe ("Esse teste deve verificar se o cep é válido", () => {
+  it ("Irá verificar este cep e deve receber true", () => {
+    expect(validarCEP("12345678")).toBe(true);
+  })
+  it ("Irá verificar este cep e deve receber false" ,() => {
+    expect(validarCEP("12A4567")).toBe(false);
+  })
+})
+
+describe ("Esse teste deve contar quantas palavras corretamente em frases", () => {
+  it ("Deve contar as palavras e retornar true", () => {
+    expect(contarPalavras("Isso é um teste simples")).toBe(5);
+  })
+  it ("Deve contar as palavras e remover espaçoes extras, deverá retornar false" ,() => {
+    expect(contarPalavras("    Espaços    Extras      ")).toBe(2);
+  })
+  it ("Deve retornar 0 se for string vazia ou só espaços", () => {
+    expect(contarPalavras("  ")).toBe(0);
+  })
+})

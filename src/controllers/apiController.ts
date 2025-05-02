@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 // deve haver uppercase
 // deve haver ao menos um caracter especial
 // quantidade miníma de caracteres = 8?
-// deev haver pelo menos um número
+// deve haver pelo menos um número
 
 export function verificarSenhaForte (senha: string): boolean {
     const temLower = /[a-z]/.test(senha);
@@ -31,5 +31,22 @@ export function ehPar(numero: number): boolean {
 }
 
 export function mediaArray(numeros: number[]): number {
-    
+    if (numeros.length === 0) {
+        return NaN;
+    }
+    const soma = numeros.reduce((total, valor) => total + valor, 0);
+    return soma / numeros.length;
+}
+
+export function validarCEP(cep: string): boolean {
+    const cepValido = /[x{8}!@#$%^&*(),.?":{}|<>]/;
+    return cepValido.test(cep);
+}
+
+export function contarPalavras(frase: string): number {
+    if(!frase){
+        return 0
+    }
+    const palavras = frase.trim().split(/\s+/);
+    return palavras.filter(p => p.length > 0).length;
 }
