@@ -6,7 +6,6 @@ export class Professores extends Model {
     public nome!: string;
     public email!: string;
     public matricula!: string;
-    public turma!: number;
 }
 
 Professores.init(

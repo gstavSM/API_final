@@ -1,11 +1,5 @@
 import { Request, Response } from 'express';
 
-// senha forte:
-// deve haver lowercase
-// deve haver uppercase
-// deve haver ao menos um caracter especial
-// quantidade miníma de caracteres = 8?
-// deve haver pelo menos um número
 
 export function verificarSenhaForte (senha: string): boolean {
     const temLower = /[a-z]/.test(senha);

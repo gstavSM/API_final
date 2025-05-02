@@ -4,15 +4,21 @@ import { Aluno } from "./Aluno";
 import { Disciplinas } from "./Disciplinas";
 
 export class AlunoDisciplina extends Model {
-  public alunoId!: number;
-  public disciplinaId!: number;
+  public id!: number;
+  public alunoId!: number | null;
+  public disciplinaId!: number | null;
 }
 
 AlunoDisciplina.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     alunoId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: Aluno,
         key: "id",
@@ -21,7 +27,7 @@ AlunoDisciplina.init(
     },
     disciplinaId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: Disciplinas,
         key: "id",

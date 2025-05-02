@@ -55,11 +55,11 @@ describe ("Esse teste deve verificar se o cep é válido", () => {
   })
 })
 
-describe ("Esse teste deve contar quantas palavras corretamente em frases", () => {
+describe ("Esse teste deve contar a quantidade correta de palavras nas frases", () => {
   it ("Deve contar as palavras e retornar true", () => {
     expect(contarPalavras("Isso é um teste simples")).toBe(5);
   })
-  it ("Deve contar as palavras e remover espaçoes extras, deverá retornar false" ,() => {
+  it ("Deve contar as palavras, remover espaçoes extras e retornar false" ,() => {
     expect(contarPalavras("    Espaços    Extras      ")).toBe(2);
   })
   it ("Deve retornar 0 se for string vazia ou só espaços", () => {

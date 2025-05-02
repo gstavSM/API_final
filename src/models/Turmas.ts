@@ -21,15 +21,11 @@ Turmas.init(
               type: DataTypes.STRING, 
               allowNull: false,
           },
-          email: {
-              type: DataTypes.STRING,
-              allowNull: true, 
-          },
           periodo: {
               type: DataTypes.STRING,
               allowNull: true,
           },
-             cursoId: {
+             id_curso: {
                 type: DataTypes.INTEGER,
                 allowNull: true,
                 references: {

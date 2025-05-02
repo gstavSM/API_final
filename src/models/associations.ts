@@ -12,4 +12,6 @@ Disciplinas.belongsToMany(Aluno, {
     foreignKey: "alunoId"
 });
 
+
+
 console.log("Relações entre models configuradas");

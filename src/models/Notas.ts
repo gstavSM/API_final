@@ -4,9 +4,11 @@ import { Aluno } from "./Aluno";
 import { Disciplinas } from "./Disciplinas";
 
 export class Notas extends Model {
-  public Id!: number;
+  public id!: number;
   public alunoId!: number;
   public disciplinaId!: number;
+  public data!: Date;
+  public nota!: number;
 }
 
 Notas.init(
@@ -18,7 +20,7 @@ Notas.init(
     },
     alunoId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: Aluno,
         key: "id",
@@ -27,13 +29,21 @@ Notas.init(
     },
     disciplinaId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: Disciplinas,
         key: "id",
       },
       onDelete: "CASCADE",
     },
+    nota: {
+      type: DataTypes.DECIMAL(5,2),
+      allowNull: true,
+    },
+    data_avaliacao:{
+      type: DataTypes.DATE,
+      allowNull: true,
+    }
   },
   {
     sequelize,
