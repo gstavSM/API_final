@@ -11,7 +11,7 @@ export const listarDisciplinasDoAluno = async (req: Request, res: Response) : Pr
     
     if (aluno) {
         return res.json(aluno);
-    }
+    }//
 
     return res.status(404).json({error: "Aluno não encontrado. "});
 };
