@@ -46,4 +46,16 @@ export const atualizarDisciplina = async (req: Request, res: Response)  : Promis
     }catch (error) {
         res.status(500).json({ message: "Erro ao atualizar Disciplina.", error });
     }
-};
+}  
+
+    export const deletarDisciplina = async (req: Request, res: Response) : Promise<any> => {
+        const { disciplinaId } =req.params;
+        let disciplina = await Disciplinas.findByPk(disciplinaId);
+
+        if (disciplina){
+        await disciplina.destroy();
+        return res.json ({message: "Disciplina deletada com sucesso." });
+        }
+
+        return res.status(404).json({error: "Disciplina não encontrada." });
+    };
